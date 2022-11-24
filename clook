@@ -1,0 +1,27 @@
+#include <iostream> using namespace std; int main() {
+int n, head, st = 0; cin>>n;
+int arr[n];
+for(int i=0; i<n; i++) { cin>>arr[i];
+}
+cin>>head;
+for(int i=1; i<n; i++) {
+int j = i-1, temp = arr[i]; while(j>=0 && arr[j]>temp) { arr[j+1] = arr[j];
+j--;
+}
+arr[j+1] = temp;
+}
+int i = 0;
+while(i<n && arr[i]<head) { i++;
+}
+int flag = i;
+while(i<n) {
+st += (arr[i]-head);
+head = arr[i];
+i++;
+}
+i = 0;
+while(i<flag) {
+st += abs(arr[i] - head); head = arr[i];
+i++;
+} cout<<st<<endl; return 0;
+}
