@@ -1,0 +1,21 @@
+#include <iostream> using namespace std;
+void swap(int &a, int &b) { int temp = a;
+a = b;
+b = a;
+}
+void bestFit(int *prSize, int *holes, int n, int m) { int bfit[n];
+for(int i=0; i<n; i++) {
+int space = -1;
+for(int j=0; j<m; j++) {
+if(prSize[i]<=holes[j] && (space==-1 || holes[j]<holes[space])) { space = j;
+}
+}
+if(space==-1) { bfit[i] = -1;
+}
+else {
+bfit[i] = space; holes[space] -= prSize[i]; }
+}
+cout<<"Best fit\n"; for(int i=0; i<n; i++) { cout<<bfit[i]<<" ";
+}
+cout<<endl;
+}
